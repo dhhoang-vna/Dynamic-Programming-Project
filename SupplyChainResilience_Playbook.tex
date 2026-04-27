@@ -5,6 +5,7 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{bm}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{hyperref}
@@ -13,9 +14,9 @@
 
 \onehalfspacing
 
-\title{Problem Sets 7 and 8 \\ A Dynamic Model of Industrial Policy for Supply-Chain Resilience}
+\title{A Simple Dynamic Model of Industrial Policy \\ for Supply-Chain Resilience}
 \author{Hung D. Hoang}
-\date{\today}
+\date{January 2026}
 
 \begin{document}
 
@@ -343,70 +344,78 @@ V_K(K',d').
 \paragraph{Interpretation.}
 Domestic capacity is especially valuable when foreign disruptions make imports expensive and when the domestic capacity constraint binds. But the marginal value of capacity declines as $K$ rises, because the economy becomes less constrained.
 
-\section{PS8 Numerical Results (VFI and PFI)}
+\section{Numerical Results (VFI and PFI)}
 
 This section reports the numerical policy and value functions computed in Python for the model above. I solve the Bellman problem using both value function iteration (VFI) and policy function iteration (PFI), and then plot the resulting objects as functions of domestic capacity $K$ under disruption states $d\in\{0,1\}$.
 
 \subsection{Value Function}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{value_function.png}
-    \caption{Value function from VFI.}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.75\textwidth]{value_function_pfi.png}
-    \caption{Value function from PFI.}
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{value_function.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{value_function_pfi.png}
+    \end{minipage}
+    \caption{Value function comparison: VFI (left) and PFI (right).}
 \end{figure}
 
 The value is lower in the disruption state ($d=1$) for all $K$, and increasing in domestic capacity. VFI and PFI deliver nearly identical value profiles.
 
 \subsection{Domestic Sourcing Policy}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{domestic_sourcing_policy.png}
-    \caption{Domestic sourcing policy from VFI.}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.75\textwidth]{domestic_sourcing_policy_pfi.png}
-    \caption{Domestic sourcing policy from PFI.}
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{domestic_sourcing_policy.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{domestic_sourcing_policy_pfi.png}
+    \end{minipage}
+    \caption{Domestic sourcing policy comparison: VFI (left) and PFI (right).}
 \end{figure}
 
 The policy follows the analytical rule $x^*(K,d)=\min\{K,p_f(d)/c_d\}$. Under disruption, desired domestic sourcing is higher and reaches its cap later as $K$ rises.
 
 \subsection{Subsidy Policy}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{subsidy_policy.png}
-    \caption{Subsidy policy from VFI.}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.75\textwidth]{subsidy_policy_pfi.png}
-    \caption{Subsidy policy from PFI.}
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{subsidy_policy.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{subsidy_policy_pfi.png}
+    \end{minipage}
+    \caption{Subsidy policy comparison: VFI (left) and PFI (right).}
 \end{figure}
 
 Optimal subsidy effort is decreasing in existing domestic capacity, reflecting diminishing marginal resilience benefits from additional support as the system becomes less constrained.
 
 \subsection{Next-Period Capacity Policy}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{next_period_capacity_policy.png}
-    \caption{Next-period capacity policy from VFI.}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.75\textwidth]{next_period_capacity_policy_pfi.png}
-    \caption{Next-period capacity policy from PFI.}
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{next_period_capacity_policy.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{next_period_capacity_policy_pfi.png}
+    \end{minipage}
+    \caption{Next-period capacity policy comparison: VFI (left) and PFI (right).}
 \end{figure}
 
 The induced law of motion $K'(K,d)$ is increasing in $K$ and very similar across the two numerical methods, with slightly higher accumulation incentives under disruption at low-to-middle capacity levels.
